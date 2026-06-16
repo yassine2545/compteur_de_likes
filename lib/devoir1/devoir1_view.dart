@@ -1,26 +1,29 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key});
+class DevoirView extends StatefulWidget {
+  const DevoirView({super.key});
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<DevoirView> createState() => _DevoirViewState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _DevoirViewState extends State<DevoirView> {
   int _likes = 0;
   String _message = 'Pas de likes ...';
+  Icon _favoriteIcon = Icon(Icons.favorite, color: Colors.grey);
 
   void _incrementCounter() {
     setState(() {
       _likes++;
       if (_likes == 0) {
         _message = 'Pas de likes ...';
-      } else if (_likes > 1 && _likes <= 9) {
+        _favoriteIcon = Icon(Icons.favorite, color: Colors.grey);
+      } else if (_likes == 1 && _likes <= 9) {
         _message = 'Merci pour votre like !';
+        _favoriteIcon = Icon(Icons.favorite, color: Colors.red);
       } else if (_likes == 10) {
         _message = 'Wow, populaire';
+        _favoriteIcon = Icon(Icons.favorite, color: Colors.amber);
       }
     });
   }
@@ -39,17 +42,9 @@ class _MyHomePageState extends State<MyHomePage> {
           children: [
             const Text(
               'Mes Likes',
-              style: TextStyle(
-                fontSize: 30,
-                fontWeight: FontWeight.bold,
-                color: Color.fromARGB(255, 0, 0, 0),
-              ),
+              style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
             ),
-            IconButton(
-              icon: const Icon(Icons.favorite, size: 100),
-              color: Colors.red,
-              onPressed: _incrementCounter,
-            ),
+            IconButton(icon: _favoriteIcon, onPressed: () {}),
 
             Text(
               '$_likes',
@@ -59,27 +54,45 @@ class _MyHomePageState extends State<MyHomePage> {
               '$_message',
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
+
             Row(
               children: [
-                ElevatedButton(
-                  onPressed: () {
-                    setState(() {
-                      _likes = 0;
-                      _message = 'Pas de likes ...';
-                    });
-                  },
-                  child: Text('Reset'),
+                Padding(
+                  padding: const EdgeInsets.all(50.0),
+                  child: ElevatedButton(
+                    onPressed: () {
+                      setState(() {
+                        _incrementCounter();
+                        Icon(Icons.favorite, color: Colors.grey);
+                        Text('Likes');
+                      });
+                    },
+                    child: Row(
+                      children: [
+                        Icon(Icons.favorite, color: Colors.red),
+                        Text('Likes'),
+                      ],
+                    ),
+                  ),
+                ),
+
+                Padding(
+                  padding: const EdgeInsets.all(50.0),
+                  child: ElevatedButton(
+                    onPressed: () {
+                      setState(() {
+                        _likes = 0;
+                        _favoriteIcon = Icon(
+                          Icons.favorite,
+                          color: Colors.grey,
+                        );
+                        _message = 'Pas de likes ...';
+                      });
+                    },
+                    child: Text('Reset'),
+                  ),
                 ),
               ],
-            ),
-            ElevatedButton(
-              onPressed: () {
-                setState(() {
-                  _likes = 0;
-                  _message = 'Pas de likes ...';
-                });
-              },
-              child: Text('Reset'),
             ),
           ],
         ),
