@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class DevoirView extends StatefulWidget {
-  const DevoirView({super.key});
+class Devoir1View extends StatefulWidget {
+  const Devoir1View({super.key});
 
   @override
-  State<DevoirView> createState() => _DevoirViewState();
+  State<Devoir1View> createState() => _Devoir1ViewState();
 }
 
-class _DevoirViewState extends State<DevoirView> {
+class _Devoir1ViewState extends State<Devoir1View> {
   int _likes = 0;
   String _message = 'Pas de likes ...';
   Icon _favoriteIcon = Icon(Icons.favorite, color: Colors.grey);

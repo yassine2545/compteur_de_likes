@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:compteur_de_likes/devoir1/devoir1_view.dart';
+import 'package:compteur_de_likes/Devoir/devoir1/devoir1_view.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,6 +11,6 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(debugShowCheckedModeBanner: false, home: DevoirView());
+    return MaterialApp(debugShowCheckedModeBanner: false, home: Devoir1View());
   }
 }
