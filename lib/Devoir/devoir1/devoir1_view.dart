@@ -44,7 +44,7 @@ class _Devoir1ViewState extends State<Devoir1View> {
               'Mes Likes',
               style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
             ),
-            IconButton(icon: _favoriteIcon, onPressed: () {}),
+            IconButton(icon: _favoriteIcon, onPressed: () {}, iconSize: 100),
 
             Text(
               '$_likes',
